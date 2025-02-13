@@ -1,0 +1,659 @@
+{
+  "climateCoeffs": {
+    "H1": 1.1,
+    "H2": 0.9,
+    "H3": 0.6
+  },
+  "emissionFactors": {
+    "coal": {
+      "emissionFactor": -1,
+      "energyFactor": 2.666
+    },
+    "electric": {
+      "emissionFactor": 0.079,
+      "energyFactor": 0
+    },
+    "fuelOil": {
+      "emissionFactor": 0.324,
+      "energyFactor": 2.693
+    },
+    "gas": {
+      "emissionFactor": 0.244,
+      "energyFactor": 0.183
+    },
+    "propane": {
+      "emissionFactor": 0.275,
+      "energyFactor": 2.91
+    },
+    "urban": {
+      "emissionFactor": 0.109,
+      "energyFactor": 0
+    },
+    "wood": {
+      "emissionFactor": 0.0295,
+      "energyFactor": 0
+    }
+  },
+  "consumptionFactors": {
+    "old": {
+      "apartment": {
+        "electric": {
+          "emissionFactor": 98,
+          "surface": 49,
+          "part": 16.4
+        },
+        "fuelOil": {
+          "emissionFactor": 172,
+          "surface": 89,
+          "part": 2.55
+        },
+        "gas": {
+          "emissionFactor": 146,
+          "surface": 71,
+          "part": 26.05
+        },
+        "propane": {
+          "emissionFactor": 101,
+          "surface": 87,
+          "part": 0.05
+        },
+        "wood": {
+          "emissionFactor": 211,
+          "surface": 79,
+          "part": 0.25
+        },
+        "urban": {
+          "emissionFactor": 255,
+          "surface": 71,
+          "part": 4.65
+        }
+      },
+      "house": {
+        "electric": {
+          "emissionFactor": 150,
+          "surface": 96,
+          "part": 19.35
+        },
+        "fuelOil": {
+          "emissionFactor": 187,
+          "surface": 119,
+          "part": 9.25
+        },
+        "gas": {
+          "emissionFactor": 201,
+          "surface": 105,
+          "part": 16.1
+        },
+        "propane": {
+          "emissionFactor": 139,
+          "surface": 114,
+          "part": 1.25
+        },
+        "wood": {
+          "emissionFactor": 290,
+          "surface": 106,
+          "part": 3.9
+        },
+        "urban": {
+          "emissionFactor": -1,
+          "surface": -1,
+          "part": 0.2
+        }
+      }
+    },
+    "recent": {
+      "apartment": {
+        "electric": {
+          "emissionFactor": 65,
+          "surface": 53,
+          "part": 16.4
+        },
+        "fuelOil": {
+          "emissionFactor": 162,
+          "surface": 88,
+          "part": 2.55
+        },
+        "gas": {
+          "emissionFactor": 125,
+          "surface": 71,
+          "part": 26.05
+        },
+        "propane": {
+          "emissionFactor": 80,
+          "surface": 86,
+          "part": 0.05
+        },
+        "wood": {
+          "emissionFactor": 172,
+          "surface": 79,
+          "part": 0.25
+        },
+        "urban": {
+          "emissionFactor": 230,
+          "surface": 70,
+          "part": 4.65
+        }
+      },
+      "house": {
+        "electric": {
+          "emissionFactor": 106,
+          "surface": 110,
+          "part": 19.35
+        },
+        "fuelOil": {
+          "emissionFactor": 171,
+          "surface": 120,
+          "part": 9.25
+        },
+        "gas": {
+          "emissionFactor": 166,
+          "surface": 112,
+          "part": 16.1
+        },
+        "propane": {
+          "emissionFactor": 129,
+          "surface": 116,
+          "part": 1.25
+        },
+        "wood": {
+          "emissionFactor": 235,
+          "surface": 114,
+          "part": 3.9
+        },
+        "urban": {
+          "emissionFactor": -1,
+          "surface": -1,
+          "part": 0.2
+        }
+      }
+    }
+  },
+  "regions": [
+    {
+      "DEP": 1,
+      "NCC": "AIN",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 2,
+      "NCC": "AISNE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 3,
+      "NCC": "ALLIER",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 4,
+      "NCC": "ALPES-DE-HAUTE-PROVENCE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 5,
+      "NCC": "HAUTES-ALPES",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 8,
+      "NCC": "ARDENNES",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 10,
+      "NCC": "AUBE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 14,
+      "NCC": "CALVADOS",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 15,
+      "NCC": "CANTAL",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 19,
+      "NCC": "CORRÈZE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 21,
+      "NCC": "CÔTE D'OR",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 23,
+      "NCC": "CREUSE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 25,
+      "NCC": "DOUBS",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 27,
+      "NCC": "EURE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 28,
+      "NCC": "EURE-ET-LOIR",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 38,
+      "NCC": "ISÈRE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 39,
+      "NCC": "JURA",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 42,
+      "NCC": "LOIRE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 43,
+      "NCC": "HAUTE-LOIRE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 45,
+      "NCC": "LOIRET",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 51,
+      "NCC": "MARNE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 52,
+      "NCC": "HAUTE-MARNE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 54,
+      "NCC": "MEURTHE-ET-MOSELLE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 55,
+      "NCC": "MEUSE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 57,
+      "NCC": "MOSELLE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 58,
+      "NCC": "NIÈVRE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 59,
+      "NCC": "NORD",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 60,
+      "NCC": "OISE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 61,
+      "NCC": "ORNE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 62,
+      "NCC": "PAS-DE-CALAIS",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 63,
+      "NCC": "PUY-DE-DÔME",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 67,
+      "NCC": "BAS-RHIN",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 68,
+      "NCC": "HAUT-RHIN",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 69,
+      "NCC": "RHÔNE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 70,
+      "NCC": "HAUTE-SAÔNE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 71,
+      "NCC": "SAÔNE-ET-LOIRE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 73,
+      "NCC": "SAVOIE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 74,
+      "NCC": "HAUTE-SAVOIE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 75,
+      "NCC": "PARIS",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 76,
+      "NCC": "SEINE-MARITIME",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 77,
+      "NCC": "SEINE-ET-MARNE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 78,
+      "NCC": "YVELINES",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 80,
+      "NCC": "SOMME",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 87,
+      "NCC": "HAUTE-VIENNE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 88,
+      "NCC": "VOSGES",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 89,
+      "NCC": "YONNE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 90,
+      "NCC": "TERRITOIRE-DE-BELFORT",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 91,
+      "NCC": "ESSONE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 92,
+      "NCC": "HAUT-DE-SEINE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 93,
+      "NCC": "SEINE-SAINT-DENIS",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 94,
+      "NCC": "VAL-DE-MARNE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 95,
+      "NCC": "VAL-D'OISE",
+      "FACTOR": "H1"
+    },
+    {
+      "DEP": 4,
+      "NCC": "ALPES-DE-HAUTE-PROVENCE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 7,
+      "NCC": "ARDÈCHE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 9,
+      "NCC": "ARIÈGE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 12,
+      "NCC": "AVEYRON",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 16,
+      "NCC": "CHARENTE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 17,
+      "NCC": "CHARENTE-MARITIME",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 18,
+      "NCC": "CHER",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 22,
+      "NCC": "CÔTES-D'ARMOR",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 24,
+      "NCC": "DORDOGNE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 26,
+      "NCC": "DROME",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 29,
+      "NCC": "FINISTÈRE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 31,
+      "NCC": "HAUTE-GARONNE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 32,
+      "NCC": "GERS",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 33,
+      "NCC": "GIRONDE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 35,
+      "NCC": "ILE-ET-VILAINE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 36,
+      "NCC": "INDRE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 37,
+      "NCC": "INDRE-ET-LOIRE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 40,
+      "NCC": "LANDES",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 41,
+      "NCC": "LOIRE-ET-CHER",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 44,
+      "NCC": "ARDÈCLOIRE-ATLANTIQUE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 46,
+      "NCC": "LOT",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 47,
+      "NCC": "LOT-ET-GARONNE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 48,
+      "NCC": "LOZÈRE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 49,
+      "NCC": "MAINE-ET-LOIRE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 50,
+      "NCC": "MANCHE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 53,
+      "NCC": "MAYENNE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 56,
+      "NCC": "MORBIHAN",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 64,
+      "NCC": "PYRÉNÉES-ATLANTIQUES",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 65,
+      "NCC": "HAUTE-PYRÉNÉES",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 72,
+      "NCC": "SARTHE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 79,
+      "NCC": "DEUX-SÈVRES",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 81,
+      "NCC": "TARN",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 82,
+      "NCC": "TARN-ET-GARONNE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 84,
+      "NCC": "VAUCLUSE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 85,
+      "NCC": "VENDÉE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 86,
+      "NCC": "VIENNE",
+      "FACTOR": "H2"
+    },
+    {
+      "DEP": 6,
+      "NCC": "ALPES-MARITIMES",
+      "FACTOR": "H3"
+    },
+    {
+      "DEP": 11,
+      "NCC": "AUDE",
+      "FACTOR": "H3"
+    },
+    {
+      "DEP": 13,
+      "NCC": "BOUCHE-DU-RHÔNE",
+      "FACTOR": "H3"
+    },
+    {
+      "DEP": 20,
+      "NCC": "CORSE",
+      "FACTOR": "H3"
+    },
+    {
+      "DEP": 30,
+      "NCC": "GARD",
+      "FACTOR": "H3"
+    },
+    {
+      "DEP": 34,
+      "NCC": "HÉRAULT",
+      "FACTOR": "H3"
+    },
+    {
+      "DEP": 66,
+      "NCC": "PYRÉNÉES-ORIENTALES",
+      "FACTOR": "H3"
+    },
+    {
+      "DEP": 83,
+      "NCC": "VAR",
+      "FACTOR": "H3"
+    }
+  ],
+  "study": {
+    "totalEmission": 47.8e9,
+    "peopleCount": 67626396,
+    "apartment": 12276500,
+    "house": 16103200
+  }
+}

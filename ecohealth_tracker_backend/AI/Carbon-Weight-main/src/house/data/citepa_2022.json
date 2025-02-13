@@ -1,0 +1,29 @@
+{
+  "emissionFactors": {
+    "coal": {
+      "energyFactor": 2.666
+    },
+    "electric": {
+      "energyFactor": 0.084
+    },
+    "fuelOil": {
+      "energyFactor": 2.693
+    },
+    "gas": {
+      "energyFactor": 0.183
+    },
+    "propane": {
+      "energyFactor": 2.91
+    },
+    "urban": {
+      "energyFactor": 0.056
+    },
+    "wood": {
+      "energyFactor": 0.146
+    }
+  },
+  "study": {
+    "totalEmission": 47.8e9,
+    "peopleCount": 67626396
+  }
+}

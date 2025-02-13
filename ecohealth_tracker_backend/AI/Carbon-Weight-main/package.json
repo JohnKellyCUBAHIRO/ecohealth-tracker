@@ -1,0 +1,47 @@
+{
+  "name": "@cco2/carbon-weight",
+  "version": "1.5.9",
+  "description": "Carbon Footprint Calculator For Individuals And Households",
+  "author": "Michael Jeulin-Lagarrigue <michael.jeulinl@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "carbon",
+    "footprint",
+    "calculator",
+    "co2",
+    "compte-co2"
+  ],
+  "homepage": "https://github.com/CompteCO2/Carbon-Weight",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CompteCO2/Carbon-Weight"
+  },
+  "private": false,
+  "main": "src/index.ts",
+  "engines": {
+    "node": ">= 12.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "codecov": "^3.8.2",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "tslib": "^2.6.2",
+    "typedoc": "^0.25.4",
+    "typedoc-plugin-markdown": "^3.17.1",
+    "typescript": "^5.3.3"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run lint && tsc && npm run test",
+    "build:release": "npm run lint && tsc && npm run test && npm run docs",
+    "docs": "typedoc --plugin typedoc-plugin-markdown src/*",
+    "lint": "eslint -c .eslintrc.json",
+    "test": "jest  --env=node --colors --coverage test"
+  }
+}
