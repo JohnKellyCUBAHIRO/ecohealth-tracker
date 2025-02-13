@@ -1,0 +1,7 @@
+axios
+react-router-dom
+jwt-decode
+bootstrap
+glightbox
+aos
+bootstrap-icons
