@@ -14,6 +14,7 @@ from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
 import os
+#from decouple import config
 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,8 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-nd!(45!rgq1!g)^rn5iue#v)sg$yvce+2p!4&1z3!x_uzpwk74"
 
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "api",
     "rest_framework",
+    'rest_framework_simplejwt',
     "corsheaders",
 ]
 
@@ -96,22 +98,18 @@ WSGI_APPLICATION = "ecohealth_tracker_backend.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
          #'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
 
         'ENGINE': 'django.db.backends.postgresql',
-        #'NAME': 'ecohealth_tracker',
-        #'USER': 'postgres',
-        #'PASSWORD': 'postgres',
-        #'HOST': 'localhost', 
-        #'PORT': '5432',
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PWD"),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
+        'NAME': 'ecohealth_tracker',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost', 
+        'PORT': '5432',
 
        'OPTIONS': {
            'options': '-c search_path=public',
@@ -121,6 +119,35 @@ DATABASES = {
 
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         "NAME": os.getenv("DB_NAME"),
+#         "USER": os.getenv("DB_USER"),
+#         "PASSWORD": os.getenv("DB_PWD"),
+#         "HOST": os.getenv("DB_HOST"),
+#         "PORT": os.getenv("DB_PORT"),
+#         'OPTIONS': {
+#            'options': '-c search_path=public',
+#            'client_encoding': 'UTF8',
+#         },
+#         'TIME_ZONE': 'UTC',
+#     }
+# }
+
+
+#CONN_MAX_AGE = int(os.getenv("CONN_MAX_AGE", 300))
+#DATABASE_URL = os.getenv("DATABASE_URL", None)
+
+#if DATABASE_URL is not None:
+ #  import dj_database_url
+ #  DATABASES = {
+ #         "default": dj_database_url.config(
+ #          default=DATABASE_URL,
+ #          conn_max_age=CONN_MAX_AGE,
+ #          conn_health_checks=True,
+ #     )
+ #  }
 
 
 # Password validation
@@ -166,3 +193,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
+
+#CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000').split(',')
+
+# OpenAI API settings
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+OPENAI_MODEL = os.getenv('OPENAI_MODEL', 'gpt-4o')

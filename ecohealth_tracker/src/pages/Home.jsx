@@ -1,7 +1,10 @@
 
-import React, { useEffect } from 'react';
-import { MyFunction } from '../utils/js/MyFunctions';
-
+import React, { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
+import MyFunction, { useChatbotFunctions } from '../utils/js/MyFunctions';
+import '../assets/chatbot.css';
+import api from "../api";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 
 const MyComponent = () => {
     useEffect(() => {
@@ -20,7 +23,7 @@ const MyComponent = () => {
 
                 <nav id="navmenu" className="navmenu">
                     <ul>
-                        <li><a href="#hero" className="active">Home</a></li>
+                        <li><a href="/logout" className="active">Logout</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#features">Features</a></li>
@@ -648,11 +651,139 @@ const MyMain = () => (
 
             </section>
         </main>
+
+
     </div>
 );
 
 export { MyMain };
 
+
+const Chatbot = () => {
+    const [messages, setMessages] = useState([]);
+    const [input, setInput] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
+    const messagesEndRef = useRef(null);
+
+    const toggleChatbot = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const sendMessage = async () => {
+        const userMessage = { sender: 'user', text: input };
+    const updatedMessages = [...messages, userMessage];
+    setMessages(updatedMessages);
+    setInput('');
+
+    try {
+        
+        const sessionId = localStorage.getItem('chatSessionId');
+        {/*const token = localStorage.getItem('ACCESS_');*/}
+        const token = localStorage.getItem(ACCESS_TOKEN);
+        
+        
+        const response = await api.post("/api/chat/", {
+            message: input,
+            session_id: sessionId
+            
+        }, {
+            headers: {
+                'Authorization': `Bearer ${token}` 
+            }
+       
+        }).catch(error => {
+            console.error('API call error:', error.response ? error.response.data : error.message);
+            throw error;
+        });
+        
+        
+        if (response.data.session_id) {
+            localStorage.setItem('chatSessionId', response.data.session_id);
+        }
+        
+        const botMessage = { sender: 'bot', text: response.data.reply };
+        setMessages([...updatedMessages, botMessage]);
+    } catch (error) {
+        console.error('Error sending message:', error);
+        setMessages([
+            ...updatedMessages, 
+            { sender: 'bot', text: 'Sorry, I encountered an error. Please try again.' }
+        ]);
+    }
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
+
+    return (
+        <section id="chatbot" className="chatbot-section">
+            <div className="chatbot-container">
+
+                <button
+                    id="chatbot-toggle"
+                    className="chatbot-toggle-btn"
+                    onClick={toggleChatbot}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M3 12a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4.414l-1.707 1.707A1 1 0 0 1 3 12zm0-1h10V4H3v7zm1-2a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H4zm0-2a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H4zm0-2a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H4z"></path>
+                    </svg>
+                </button>
+                
+
+                <div className={`chatbot-dialog ${isOpen ? 'open' : ''}`}>
+                    <div className="chatbot-header">
+                        <h3>Assistant Chatbot</h3>
+                        <button className="close-btn" onClick={toggleChatbot}>×</button>
+                    </div>
+
+                    <div className="chat-window">
+                        {messages.length === 0 ? (
+                            <div className="welcome-message">
+                                <p>Hi there! Welcome to EcoHealth Tracker. <br /> How can I help you today?</p>
+                            </div>
+                        ) : (
+                            messages.map((msg, index) => (
+                                <div key={index} className={`message ${msg.sender}`}>
+                                    <div className="message-bubble">
+                                        {msg.text}
+                                    </div>
+                                </div>
+                            ))
+                        )}
+                        <div ref={messagesEndRef} />
+                    </div>
+
+                    <div className="input-container">
+                        <input
+                            type="text"
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+                            placeholder="Type a message..."
+                        />
+                        <button
+                            className="send-btn"
+                            onClick={sendMessage}
+                            disabled={input.trim() === ''}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export { Chatbot };
 const Myfoot = () => (
     <div>
         <footer id="footer" class="footer light-background">

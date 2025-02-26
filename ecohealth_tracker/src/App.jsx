@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 // import './App.css';
 import './assets/MyComponent.css';
-import { MyFunction } from './utils/js/MyFunctions';
+import MyFunction  from './utils/js/MyFunctions';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'aos/dist/aos.css';
@@ -13,7 +13,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import MyComponent from "./pages/Home";
-import { MyMain, Myfoot } from "./pages/Home";
+import { MyMain, Myfoot, Chatbot } from "./pages/Home";
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
 
@@ -22,6 +22,7 @@ function Home() {
     <>
       <MyComponent />
       <MyMain />
+      <Chatbot/>
       <Myfoot />
     </>
   );

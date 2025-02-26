@@ -14,7 +14,7 @@ function ProtectedRoute({ children }) {
     const refreshToken = async () => {
         const refreshToken = localStorage.getItem(REFRESH_TOKEN);
         try {
-            console.log("API URL:", process.env.REACT_APP_API_URL);
+            
             const res = await api.post("/api/token/refresh/", {
                 refresh: refreshToken,
             });

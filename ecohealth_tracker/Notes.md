@@ -1,4 +1,21 @@
 
+For git 
+
+1. remove git from the repository
+rm -rf .git
+2. Profile in the backend is for command to start using the app
+
+
+
+
+
+
+
+
+
+
+
+
 src/
 ├── assets/
 │   ├── img/

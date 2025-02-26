@@ -1,11 +1,110 @@
-
+import { useState, useRef } from 'react';
 import 'aos/dist/aos.css'; 
 import AOS from 'aos'; 
 import 'glightbox/dist/css/glightbox.css';
 import GLightbox from 'glightbox';
+/**
+ * Custom hook to manage the chatbot functionality
+ * @returns {Object} Functions and state for chatbot management
+ */
+export const useChatbotFunctions = () => {
+  const chatWindowRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  
+  /**
+   * Toggles the visibility of the chatbot
+   */
+  const toggleChatbot = () => {
+    setIsOpen(!isOpen);
+  };
 
-export function MyFunction() {
-    "use strict";
+  /**
+   * Initializes the chatbot UI and event listeners
+   */
+  const initializeChatbot = () => {
+    const chatbotToggle = document.getElementById('chatbot-toggle');
+    const chatbotContainer = document.getElementById('chatbot-container');
+    
+    if (chatbotToggle && chatbotContainer) {
+      // Apply initial state
+      chatbotContainer.className = isOpen ? 'active' : 'd-none';
+      
+      // Add click event to toggle button
+      chatbotToggle.addEventListener('click', () => {
+        toggleChatbot();
+        chatbotContainer.className = isOpen ? 'd-none' : 'active';
+      });
+    }
+    
+    // Add window resize event handler
+    window.addEventListener('resize', adjustChatbotPosition);
+    
+    return () => {
+      // Cleanup event listeners
+      if (chatbotToggle) {
+        chatbotToggle.removeEventListener('click', toggleChatbot);
+      }
+      window.removeEventListener('resize', adjustChatbotPosition);
+    };
+  };
+
+  /**
+   * Adjusts the chatbot position based on screen size
+   */
+  const adjustChatbotPosition = () => {
+    const chatbotContainer = document.getElementById('chatbot-container');
+    if (chatbotContainer) {
+      if (window.innerWidth < 768) {
+        // Mobile positioning
+        chatbotContainer.style.bottom = '70px';
+        chatbotContainer.style.right = '10px';
+      } else {
+        // Desktop positioning
+        chatbotContainer.style.bottom = '100px';
+        chatbotContainer.style.right = '30px';
+      }
+    }
+  };
+
+  /**
+   * Scrolls the chat window to the bottom
+   */
+  const scrollToBottom = () => {
+    if (chatWindowRef.current) {
+      chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+    }
+  };
+
+  /**
+   * Processes and formats messages for display
+   * @param {string} message - Raw message text
+   * @returns {string} Formatted message
+   */
+  const formatMessage = (message) => {
+    // Convert URLs to clickable links
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return message.replace(urlRegex, (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
+  };
+
+  return {
+    isOpen,
+    chatWindowRef,
+    toggleChatbot,
+    initializeChatbot,
+    adjustChatbotPosition,
+    scrollToBottom,
+    formatMessage
+  };
+};
+
+/**
+ * Main function to initialize chatbot functionality
+ * @returns {Function} Cleanup function
+ */
+const MyFunction = () => {
+ 
+  const chatbotToggle = document.getElementById('chatbot-toggle');
+  const chatbotContainer = document.getElementById('chatbot-container');
   
     /**
      * Apply .scrolled class to the body as the page is scrolled down
@@ -93,7 +192,7 @@ export function MyFunction() {
       });
   
       // Initiate glightbox
-      const glightbox = GLightbox({
+      GLightbox({
         selector: '.glightbox'
       });
   
@@ -115,4 +214,43 @@ export function MyFunction() {
         document.removeEventListener('scroll', toggleScrollTop);
       };
   
+  
+  const handleToggle = () => {
+    if (chatbotContainer) {
+      chatbotContainer.classList.toggle('d-none');
+      chatbotContainer.classList.toggle('active');
     }
+  };
+  
+  if (chatbotToggle) {
+    chatbotToggle.addEventListener('click', handleToggle);
+  }
+  
+  // Position the chatbot based on screen size
+  const adjustPosition = () => {
+    if (chatbotContainer) {
+      if (window.innerWidth < 768) {
+        chatbotContainer.style.width = '300px';
+        chatbotContainer.style.height = '400px';
+      } else {
+        chatbotContainer.style.width = '350px';
+        chatbotContainer.style.height = '500px';
+      }
+    }
+  };
+  
+  window.addEventListener('resize', adjustPosition);
+  
+  // Initialize positioning
+  adjustPosition();
+  
+  // Cleanup function to remove event listeners
+  return () => {
+    if (chatbotToggle) {
+      chatbotToggle.removeEventListener('click', handleToggle);
+    }
+    window.removeEventListener('resize', adjustPosition);
+  };
+};
+
+export default MyFunction;

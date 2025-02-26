@@ -9,3 +9,9 @@ pytz
 sqlparse
 psycopg2-binary
 python-dotenv
+python-decouple
+decouple
+dj-database-url
+flask
+google.generativeai
+openai
