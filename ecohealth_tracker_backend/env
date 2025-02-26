@@ -1,0 +1,5 @@
+#DB_HOST="postgresql://neondb_owner:npg_y1SCGvJ4wYXO@ep-calm-resonance-a4arfdhk-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require"
+#DB_PORT="13472"
+#DB_NAME="avnadmin"
+#DB_USER="defaultdb"
+#DB_PWD="AVNS_RNBUC7Rv5xdRtht3LQK"
