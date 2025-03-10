@@ -99,26 +99,26 @@ WSGI_APPLICATION = "ecohealth_tracker_backend.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
+#DATABASES = {
+ #   'default': {
          #'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
 
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecohealth_tracker',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost', 
-        'PORT': '5432',
+  #      'ENGINE': 'django.db.backends.postgresql',
+  #      'NAME': 'ecohealth_tracker',
+  #      'USER': 'postgres',
+   #     'PASSWORD': 'postgres',
+    #    'HOST': 'localhost', 
+    #    'PORT': '5432',
 
-       'OPTIONS': {
-           'options': '-c search_path=public',
-           'client_encoding': 'UTF8',
-        },
-       'TIME_ZONE': 'UTC',
+     #  'OPTIONS': {
+     #      'options': '-c search_path=public',
+     #      'client_encoding': 'UTF8',
+     #   },
+     #  'TIME_ZONE': 'UTC',
 
-    }
-}
+   # }
+#}
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
@@ -136,18 +136,18 @@ DATABASES = {
 # }
 
 
-#CONN_MAX_AGE = int(os.getenv("CONN_MAX_AGE", 300))
-#DATABASE_URL = os.getenv("DATABASE_URL", None)
+CONN_MAX_AGE = int(os.getenv("CONN_MAX_AGE", 300))
+DATABASE_URL = os.getenv("DATABASE_URL", None)
 
-#if DATABASE_URL is not None:
- #  import dj_database_url
- #  DATABASES = {
- #         "default": dj_database_url.config(
- #          default=DATABASE_URL,
- #          conn_max_age=CONN_MAX_AGE,
- #          conn_health_checks=True,
- #     )
- #  }
+if DATABASE_URL is not None:
+   import dj_database_url
+   DATABASES = {
+          "default": dj_database_url.config(
+           default=DATABASE_URL,
+           conn_max_age=CONN_MAX_AGE,
+           conn_health_checks=True,
+      )
+   }
 
 
 # Password validation
